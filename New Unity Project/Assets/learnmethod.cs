@@ -16,11 +16,20 @@ public class learnmethod : MonoBehaviour
         print("弓箭屬性:" + prop);
         print("弓箭方向:" + direction);
     }
+    private int Square()
+    {
+        return 2 * 2;
+    }
     private void Start()
     {
         print("哈囉，沃德~");
         Drive(100);
         Shoot(1, 15f, "冰屬性");
         Shoot(2, 20f, direction: "全角度無死角掃射");
+        print(Square());
+        int result = Square();
+        print(result);
     }
+    
+    
 }
