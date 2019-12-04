@@ -1570,6 +1570,8 @@ GameObject:
   - component: {fileID: 1940347986}
   - component: {fileID: 1940347985}
   - component: {fileID: 1940347987}
+  - component: {fileID: 1940347988}
+  - component: {fileID: 1940347989}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -1610,8 +1612,43 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940347984}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63a624f75b14f0f4fadbb319b3850757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1940347988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940347984}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abee5678e8ead0458a590fa16db117e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: 10
+  B: 3
+  C: 3
+  D: 2
+  E: 4
+  F: 5
+  key: 0
+  enemy: 1
+  HP: 24
+--- !u!114 &1940347989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940347984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee376ae679e00c54881a32616d082965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opendoor: 0
+  combo: 0
