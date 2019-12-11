@@ -12,23 +12,53 @@ public class Chicken : MonoBehaviour
     public string _Name = "G8雞";
     public bool mission;
     #endregion
+
+    public Transform tran;
+    public Rigidbody rig;
+    public Animator ani;
+    public Animation ania;
+    
+
+    private void Update()
+    {
+        Turn();
+        Run();
+    }
+
     #region 方法區域
+    /// <summary>
+    /// 跑步
+    /// </summary>
     private void Run()
     {
-
+        float v = Input.GetAxis("Vertical");
+        rig.AddForce(tran.forward * speed * v);
     }
+    /// <summary>
+    /// 旋轉
+    /// </summary>
     private void Turn()
     {
-
+        float h = Input.GetAxis("Horizontal");
+        tran.Rotate(0, turn*h, 0);
     }
+    /// <summary>
+    /// 啼叫
+    /// </summary>
     private void Burk()
     {
 
     }
+    /// <summary>
+    /// 抓取
+    /// </summary>
     private void Catch()
     {
 
     }
+    /// <summary>
+    /// 任務
+    /// </summary>
     private void Task()
     {
 
