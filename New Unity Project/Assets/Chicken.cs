@@ -6,7 +6,7 @@ public class Chicken : MonoBehaviour
 {
     #region 欄位區域
     // Start is called before the first frame update
-    [Header ("G8雞基本資料"),Tooltip ("Call me G8"),Range (1,100)]
+    [Header ("G8雞基本資料"),Tooltip ("Call me G8"),Range (1,1000)]
     public int speed = 10;
     public float turn = 20.5f;
     public string _Name = "G8雞";
@@ -16,13 +16,16 @@ public class Chicken : MonoBehaviour
     public Transform tran;
     public Rigidbody rig;
     public Animator ani;
-    public Animation ania;
+    public AudioSource aud;
+    public AudioClip soundBark;
     
 
     private void Update()
     {
         Turn();
         Run();
+        Bark();
+        Catch();
     }
 
     #region 方法區域
@@ -31,8 +34,11 @@ public class Chicken : MonoBehaviour
     /// </summary>
     private void Run()
     {
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("撿東西")) return;
+            
         float v = Input.GetAxis("Vertical");
-        rig.AddForce(tran.forward * speed * v);
+        rig.AddForce(tran.forward * speed * v * Time.deltaTime);
+        ani.SetBool("走路開關", v != 0);
     }
     /// <summary>
     /// 旋轉
@@ -45,16 +51,23 @@ public class Chicken : MonoBehaviour
     /// <summary>
     /// 啼叫
     /// </summary>
-    private void Burk()
+    private void Bark()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ani.SetTrigger("拍翅膀開關");
+            aud.PlayOneShot(soundBark, 0.6f);
+        }
     }
     /// <summary>
     /// 抓取
     /// </summary>
     private void Catch()
     {
-
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            ani.SetTrigger("撿東西開關");
+        }
     }
     /// <summary>
     /// 任務
