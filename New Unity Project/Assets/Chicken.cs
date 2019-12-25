@@ -11,21 +11,38 @@ public class Chicken : MonoBehaviour
     public float turn = 20.5f;
     public string _Name = "G8雞";
     public bool mission;
-    #endregion
-
     public Transform tran;
     public Rigidbody rig;
     public Animator ani;
     public AudioSource aud;
     public AudioClip soundBark;
-    
+    #endregion
 
+    [Header("撿物品位置")]
+
+    public Rigidbody rigCatch;
+    
     private void Update()
     {
         Turn();
         Run();
         Bark();
         Catch();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        print(other.name);
+        if (other.name == "雞腿" && ani.GetCurrentAnimatorStateInfo(0).IsName("撿東西"))
+        {
+            Physics.IgnoreCollision(other, GetComponent<Collider>());
+            other.GetComponent<HingeJoint>().connectedBody = rigCatch;
+
+        }
+        if (other.name == "草地" && ani.GetCurrentAnimatorStateInfo(0).IsName("撿東西"))
+        {
+            GameObject.Find("雞腿").GetComponent<HingeJoint>().connectedBody = null;
+        }
     }
 
     #region 方法區域
